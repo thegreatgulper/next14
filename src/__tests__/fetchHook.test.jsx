@@ -29,10 +29,10 @@ describe('FetchHook Page', () => {
     expect(userId).toBeInTheDocument();
   });
   it('catches error and returns error message', async () => {
-    // fetch.mockRejectOnce(Promise.reject(new Error('bad url')));
     fetch.mockReject('fake error message');
-    await act(() => {
-      render(<FetchHook />)
+    act(() => {
+      render(<FetchHook />);
+      
     });
     await waitFor(() => {
       const error = screen.getByTestId('error')
